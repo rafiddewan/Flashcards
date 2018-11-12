@@ -41,6 +41,7 @@ public class MultiplicationFlashCardApplication {
                 {
                     check = false;
                     proceedOrExit = true;
+                    System.out.println("You've got " + multiplicationFlashCards.getScore() +  " so far");
                 }
             } while(!proceedOrExit);
         }
