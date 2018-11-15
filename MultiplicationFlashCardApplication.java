@@ -2,27 +2,35 @@ package com.company;
 import java.io.InputStream;
 import java.util.Scanner;
 
+/**
+ * Client class for the multiplication flashcards
+ */
 public class MultiplicationFlashCardApplication {
 
+    /**
+     * Client code for multiplication flashcards
+     * @param args
+     */
     public static void main(String[] args)
     {
+
         Scanner input = new Scanner(System.in);
-        int mulitiplier = 0;
-        int[] multipliers = null;
+        int multiplier = 0;
+        int[] multipliers;
         MultiplicationFlashCards multiplicationFlashCards;
         System.out.println("Which times tables would you like to test? (Between 1 and 12 inclusive)");
         String str = input.nextLine();
         if(str.length() == 1){
-            mulitiplier = Integer.parseInt(str);
-            multiplicationFlashCards = new MultiplicationFlashCards(mulitiplier);
+            multiplier = Integer.parseInt(str); //parsing a single multiplier
+            if(multiplier > 12 || multiplier < 1) throw new IllegalArgumentException("Should be between 1 and 12");
+            multiplicationFlashCards = new MultiplicationFlashCards(multiplier);
         }
         else{
-            multipliers = new int[str.length()];
-            Scanner scan = new Scanner(str);
-            int i = 0;
-            while(scan.hasNextInt()) {
-                multipliers[i] = scan.nextInt();
-                i++;
+            String [] strNum = str.split(" "); //split the array of the null spaces of the array of numbers
+            multipliers = new int[strNum.length];
+            for(int i = 0; i < strNum.length; i++) {
+                multipliers[i] = Integer.parseInt(strNum[i]); //parsing multiple multipliers
+                if(multipliers[i] > 12 || multipliers[i] < 1) throw new  IllegalArgumentException("Should be between 1 and 12");
             }
                 multiplicationFlashCards = new MultiplicationFlashCards(multipliers);
         }
