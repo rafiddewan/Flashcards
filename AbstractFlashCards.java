@@ -2,16 +2,20 @@ package com.company;
 
 import java.util.*;
 
+/**
+ * Abstract class of flashcards
+ */
 public abstract class AbstractFlashCards
 {
-    private HashMap <String, String> flashcards;
-    private ArrayList <String> unansweredCards;
-    private int score;
-    private Scanner scanner;
-    private Random random;
+    private HashMap <String, String> flashcards; //Key of the HashMap represents the question, and the value of the HashMap represents the answer
+    private ArrayList <String> unansweredCards; //List containing the unanswered questions of the flashcards
+    private int score; //Score of the player
+    private Scanner scanner; //Input for user
+    private Random random; //Random numbers
 
     /**
-     *
+     * Initialize all the instance variables in the constructor
+     * Score is set to 0 at the beginning of the of the game when the flashcards are created
      */
     public AbstractFlashCards()
     {
@@ -34,22 +38,21 @@ public abstract class AbstractFlashCards
     }
 
     /**
-     * Resets the deck of unanswered questions
+     * Resets and randomizes the deck of unanswered questions
      */
     public void reset()
     {
-        //if(!unansweredCards.isEmpty())
-        unansweredCards.clear();
-        String[] array = flashcards.keySet().toArray(new String[flashcards.keySet().size()]);
-        ArrayList <String> arrayList = new ArrayList<>(Arrays.asList(array));
+        unansweredCards.clear(); //removes are the unanswered flashcards
+        String[] array = flashcards.keySet().toArray(new String[flashcards.keySet().size()]); //Used to store the keys of the flashcards to the array
+        ArrayList <String> arrayList = new ArrayList<>(Arrays.asList(array)); //Created an array list to store
         for(int i = arrayList.size(); i > 0; i--)
         {
-            unansweredCards.add(0, arrayList.remove(random.nextInt(i)));
+            unansweredCards.add(0, arrayList.remove(random.nextInt(i))); //Creates a randomized set of unanswered questions
         }
     }
 
     /**
-     *
+     * Checks to see if the unanswered cards
      * @return boolean
      */
     public boolean hasNext()
@@ -63,8 +66,8 @@ public abstract class AbstractFlashCards
      */
     public boolean nextCard()
     {
-        System.out.println(Arrays.toString(unansweredCards.toArray()));
-        System.out.println(unansweredCards.get(0));
+        System.out.println(Arrays.toString(unansweredCards.toArray())); //Print the array of flashcards
+        System.out.println(unansweredCards.get(0)); //Print the first unanswered flashcard
         String userAnswer = scanner.nextLine();
         if(flashcards.containsValue(userAnswer))
         {

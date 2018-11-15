@@ -1,7 +1,14 @@
 package com.company;
 
+/**
+ * MultiplicationFlashCards Class
+ */
 public class MultiplicationFlashCards extends AbstractFlashCards
 {
+    /**
+     * Constructor creating multiple flashcards for one times table
+     * @param multiplier
+     */
     public MultiplicationFlashCards(int multiplier)
     {
         String question, answer;
@@ -13,6 +20,10 @@ public class MultiplicationFlashCards extends AbstractFlashCards
         }
     }
 
+    /**
+     * Constructor creating multiplier flashcards for multiple time tables
+     * @param multiplier
+     */
     public MultiplicationFlashCards(int[] multiplier)
     {
         String question, answer;
@@ -27,3 +38,4 @@ public class MultiplicationFlashCards extends AbstractFlashCards
         }
     }
 }
+
